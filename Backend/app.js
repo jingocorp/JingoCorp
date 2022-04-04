@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
 const app = express();
+const path = require("path");
 
 const port = process.env.PORT || 5000;
 
@@ -14,7 +15,16 @@ dotenv.config({ path: "./config.env" });
 // const userSchema = require('./models/userSchema')
 
 app.use(express.json());
+
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static("Frontend/build"));
+}
+
 app.use(require("./router/auth"));
+
+app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "/Backend/Frontend/build/index.html"));
+});
 
 require("./db/conn");
 // const dataBase = process.env.DATABASE ;
@@ -52,15 +62,15 @@ require("./db/conn");
 //     console.log("Entered to contact page") ;
 // }) ;
 
-if (process.env.NODE_ENV === "production") {
-    app.use(express.static("Frontend/build"));
-    const path = require("path");
-    app.get("*", (req, res) => {
-        res.sendFile(
-            path.resolve(__dirname + "/Backend/Frontend/build/index.html")
-        );
-    });
-}
+// if (process.env.NODE_ENV === "production") {
+//     app.use(express.static("Frontend/build"));
+//     //const path = require("path");
+//     app.get("*", (req, res) => {
+//         res.sendFile(
+//             path.resolve(__dirname + "/Backend/Frontend/build/index.html")
+//         );
+//     });
+// }
 
 app.listen(port, () => {
     console.log(`Server runing at port no. : ${port}`);

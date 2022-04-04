@@ -24,6 +24,10 @@ self.__precacheManifest = [
     "url": "/static/js/runtime~main.8cf682de.js"
   },
   {
+    "revision": "a083e2439d2e682b5ba6fed80a123221",
+    "url": "/static/media/Apple-Car.a083e243.jpg"
+  },
+  {
     "revision": "fe9fab514c46b03781d63bacb115267a",
     "url": "/static/media/rr.fe9fab51.jpg"
   },
@@ -32,16 +36,12 @@ self.__precacheManifest = [
     "url": "/static/media/bg9.e06a47bc.jpg"
   },
   {
-    "revision": "a083e2439d2e682b5ba6fed80a123221",
-    "url": "/static/media/Apple-Car.a083e243.jpg"
+    "revision": "d555b8697ac0531ec95e466a701a1f87",
+    "url": "/static/media/bg12.d555b869.jpg"
   },
   {
     "revision": "12d6dd688aedcd472710bb86adc0a8c8",
     "url": "/static/media/bmw.12d6dd68.jpg"
-  },
-  {
-    "revision": "d555b8697ac0531ec95e466a701a1f87",
-    "url": "/static/media/bg12.d555b869.jpg"
   },
   {
     "revision": "efa7e740a2adc34bf63d9ebc57ba70e8",
