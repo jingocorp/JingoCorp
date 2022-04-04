@@ -23,9 +23,7 @@ if (process.env.NODE_ENV === "production") {
 app.use(require("./router/auth"));
 
 app.get("*", (req, res) => {
-    res.sendFile(
-        path.resolve(__dirname + "/app/Backend/Frontend/build/index.html")
-    );
+    res.sendFile(path.resolve("Frontend", "build", "index.html"));
 });
 
 require("./db/conn");

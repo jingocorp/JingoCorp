@@ -40,12 +40,12 @@ self.__precacheManifest = [
     "url": "/static/media/bg9.e06a47bc.jpg"
   },
   {
-    "revision": "d555b8697ac0531ec95e466a701a1f87",
-    "url": "/static/media/bg12.d555b869.jpg"
-  },
-  {
     "revision": "efa7e740a2adc34bf63d9ebc57ba70e8",
     "url": "/static/media/bike-img.efa7e740.jpg"
+  },
+  {
+    "revision": "d555b8697ac0531ec95e466a701a1f87",
+    "url": "/static/media/bg12.d555b869.jpg"
   },
   {
     "revision": "ba58f8bcbbba6ff955cc0986780a802e",
@@ -64,12 +64,12 @@ self.__precacheManifest = [
     "url": "/static/media/r.d52a2eb3.jpg"
   },
   {
-    "revision": "72eba0590acf3be6f092a391f3e83b92",
-    "url": "/static/media/Rishav.72eba059.jpg"
-  },
-  {
     "revision": "9a54d075a721a85601174cd9749ffd9d",
     "url": "/static/media/shivendra2.9a54d075.jpg"
+  },
+  {
+    "revision": "72eba0590acf3be6f092a391f3e83b92",
+    "url": "/static/media/Rishav.72eba059.jpg"
   },
   {
     "revision": "3a2261012cf497e5dee8d82f28b07cee",
