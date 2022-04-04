@@ -28,16 +28,16 @@ self.__precacheManifest = [
     "url": "/static/media/rr.fe9fab51.jpg"
   },
   {
+    "revision": "e06a47bc7230d1c813a6c2d11a7eedfb",
+    "url": "/static/media/bg9.e06a47bc.jpg"
+  },
+  {
     "revision": "a083e2439d2e682b5ba6fed80a123221",
     "url": "/static/media/Apple-Car.a083e243.jpg"
   },
   {
     "revision": "12d6dd688aedcd472710bb86adc0a8c8",
     "url": "/static/media/bmw.12d6dd68.jpg"
-  },
-  {
-    "revision": "e06a47bc7230d1c813a6c2d11a7eedfb",
-    "url": "/static/media/bg9.e06a47bc.jpg"
   },
   {
     "revision": "d555b8697ac0531ec95e466a701a1f87",
