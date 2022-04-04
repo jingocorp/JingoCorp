@@ -14,12 +14,12 @@ const User = require("../models/userSchema");
 const Vehicle = require("../models/vehicleSchema");
 const Feedback = require("../models/feedbackSchema");
 
-router.get("/", (req, res) => {
-    console.log("Visiting Home Page via router.js");
+// router.get("/", (req, res) => {
+//     console.log("Visiting Home Page via router.js");
 
-    res.send("Welcome to Home Page from router.js !!");
-    // res.json({message : req.body}) ;
-});
+//     res.send("Welcome to Home Page from router.js !!");
+//     // res.json({message : req.body}) ;
+// });
 
 // using async-await :
 router.post("/signup", async (req, res) => {
@@ -560,11 +560,9 @@ router.post("/booknow", async (req, res) => {
                 message: "Transaction has been saved sucessfully !!",
             });
         } else {
-            return res
-                .status(422)
-                .json({
-                    error: "Transaction has not been saved sucessfully !!",
-                });
+            return res.status(422).json({
+                error: "Transaction has not been saved sucessfully !!",
+            });
         }
     } catch (err) {
         console.log(err);
