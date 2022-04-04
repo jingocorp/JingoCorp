@@ -1,22 +1,22 @@
-const express = require("express") ;
-const mongoose = require("mongoose") ;
-const dotenv = require("dotenv") ;
-const cookieParser = require("cookie-parser") ;
-const app = express() ;
+const express = require("express");
+const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+const cookieParser = require("cookie-parser");
+const app = express();
 
-const port = 5000 ;
+const port = process.env.PORT || 5000;
 
 // app.use(cookieParser()) ;
 
-console.log('hello to my first node js project !!');
+console.log("hello to my first node js project !!");
 
-dotenv.config({path : './config.env'}) ;  
-// const userSchema = require('./models/userSchema')  
+dotenv.config({ path: "./config.env" });
+// const userSchema = require('./models/userSchema')
 
-app.use(express.json()) ;
-app.use(require('./router/auth')) ;
+app.use(express.json());
+app.use(require("./router/auth"));
 
-require('./db/conn')
+require("./db/conn");
 // const dataBase = process.env.DATABASE ;
 // mongoose.connect(dataBase ,{
 //     useNewUrlParser : true ,
@@ -30,14 +30,12 @@ require('./db/conn')
 //     console.log(err);
 // }) ;
 
-
 // Middleware
-
 
 // const middleware = (req ,res ,next) => {
 //     console.log("Here's my middleware");
 //     next() ;
-// } 
+// }
 
 // app.get("/" ,(req ,res) => {
 //     res.send("Welcome to Home Page !!") ;
@@ -54,6 +52,14 @@ require('./db/conn')
 //     console.log("Entered to contact page") ;
 // }) ;
 
-app.listen(port ,() => {
-    console.log(`Server runing at port no. : ${port}`) ;
-}) ;
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static("Frontend/build"));
+    const path = require("path");
+    app.get("*", (req, res) => {
+        res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+    });
+}
+
+app.listen(port, () => {
+    console.log(`Server runing at port no. : ${port}`);
+});
