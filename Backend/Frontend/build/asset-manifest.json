@@ -1,7 +1,7 @@
 {
   "main.css": "/static/css/main.22f09ef9.chunk.css",
-  "main.js": "/static/js/main.2a96fe25.chunk.js",
-  "main.js.map": "/static/js/main.2a96fe25.chunk.js.map",
+  "main.js": "/static/js/main.dab4a8f9.chunk.js",
+  "main.js.map": "/static/js/main.dab4a8f9.chunk.js.map",
   "static/js/1.7799d9e8.chunk.js": "/static/js/1.7799d9e8.chunk.js",
   "static/js/1.7799d9e8.chunk.js.map": "/static/js/1.7799d9e8.chunk.js.map",
   "static/css/2.d924400d.chunk.css": "/static/css/2.d924400d.chunk.css",
@@ -9,11 +9,11 @@
   "static/js/2.0b0a4c7e.chunk.js.map": "/static/js/2.0b0a4c7e.chunk.js.map",
   "runtime~main.js": "/static/js/runtime~main.8cf682de.js",
   "runtime~main.js.map": "/static/js/runtime~main.8cf682de.js.map",
-  "static/media/index.css": "/static/media/Rishav.72eba059.jpg",
+  "static/media/index.css": "/static/media/shivendra2.9a54d075.jpg",
   "static/media/App.css": "/static/media/bg0.3a226101.jpg",
-  "static/css/main.22f09ef9.chunk.css.map": "/static/css/main.22f09ef9.chunk.css.map",
   "static/css/2.d924400d.chunk.css.map": "/static/css/2.d924400d.chunk.css.map",
+  "static/css/main.22f09ef9.chunk.css.map": "/static/css/main.22f09ef9.chunk.css.map",
   "index.html": "/index.html",
-  "precache-manifest.30cbaf7101b5f1ddb1a8cd3f4e2ca927.js": "/precache-manifest.30cbaf7101b5f1ddb1a8cd3f4e2ca927.js",
+  "precache-manifest.ffa4475e29e305cd762f118b53cf942a.js": "/precache-manifest.ffa4475e29e305cd762f118b53cf942a.js",
   "service-worker.js": "/service-worker.js"
 }

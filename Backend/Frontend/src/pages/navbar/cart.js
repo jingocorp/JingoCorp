@@ -390,7 +390,7 @@ const Cart = ({ cartList, setCartList }) => {
 
     const loadCartList = async () => {
         await fetchActiveUser();
-        if (activeUser) setCartList(activeUser.cart);
+        if (activeUser) await setCartList(activeUser.cart);
     };
 
     const handleBookNow = async () => {
@@ -417,7 +417,7 @@ const Cart = ({ cartList, setCartList }) => {
             );
             navigate("/rides");
         } else {
-            window.alert("Payment fails :(");
+            window.alert("Payment failed :(");
         }
 
         handleClearCart();

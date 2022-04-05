@@ -689,7 +689,7 @@ router.post("/admin", async (req, res) => {
             modelName,
             image,
             type,
-            quantity,
+            availableQty: quantity,
             rate,
             state,
             city,
