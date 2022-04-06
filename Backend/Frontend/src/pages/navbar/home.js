@@ -1,11 +1,5 @@
 // import { set } from "mongoose";
-import React, {
-    Component,
-    useState,
-    useEffect,
-    useContext,
-    useRef,
-} from "react";
+import React, { Component, useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import VehicleList from "./vehicleList";
 import { Carousel } from "antd";
@@ -28,11 +22,6 @@ function Home({ cartList, setCartList }) {
     const [searchBtnClicked, setSearchBtnClicked] = useState(false);
 
     const { stat, dispatch } = useContext(UserContext);
-
-    //useRef
-    const myRef = useRef(null);
-
-    const executeScroll = () => myRef.current.scrollIntoView();
 
     useEffect(() => {
         fetchActiveUser();
@@ -190,17 +179,14 @@ function Home({ cartList, setCartList }) {
             window.alert("Results not found !!");
             console.log("Results not found !!");
         } else {
-            // setSearchBtnClicked(true);
-            // // if (activeUser) {
-            // window.alert("Here are your results !!\n Please scroll down :)");
-            // console.log("Here are your results :");
+            setSearchBtnClicked(true);
+            // if (activeUser) {
+            window.alert("Here are your results !!\n Please scroll down :)");
+            console.log("Here are your results :");
             // } else {
             //     window.alert("Please log-in to view the vehicle list :)");
             //     navigate("/login");
             // }
-            setSearchBtnClicked(true);
-
-            executeScroll();
         }
     };
 
@@ -292,7 +278,7 @@ function Home({ cartList, setCartList }) {
                 </div>
             </div>
             {/* {searchBtnClicked && ( */}
-            <div className="vehicleList" ref={myRef}>
+            <div className="vehicleList">
                 {/* {searchBtnClicked && (
                     <VehicleList
                         searchResults={searchResults}

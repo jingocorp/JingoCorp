@@ -2,7 +2,7 @@ import React, { useContext, useReducer } from "react";
 import { css } from "@emotion/react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import SyncLoader from "react-spinners/SyncLoader";
+import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 import { UserContext } from "../../App";
 // import Texty from "rc-texty";
 // import "rc-texty/assets/index.css";
@@ -52,12 +52,12 @@ const Cart = ({ cartList, setCartList }) => {
         }
     };
 
-    // useEffect(() => {
-    //     setLoading(true);
-    //     setTimeout(() => {
-    //         setLoading(false);
-    //     }, 0);
-    // }, []);
+    useEffect(() => {
+        setLoading(true);
+        setTimeout(() => {
+            setLoading(false);
+        }, 0);
+    }, []);
 
     // using this useEffect to solve the one step lag of UseState hook by calling/updating the activeUser and cartList
     // on each render of the page by passing their updating functions as well in the same only ... As it is called
@@ -389,12 +389,8 @@ const Cart = ({ cartList, setCartList }) => {
     };
 
     const loadCartList = async () => {
-        setLoading(true);
         await fetchActiveUser();
-        if (activeUser) {
-            setCartList(activeUser.cart);
-            setLoading(false);
-        }
+        if (activeUser) await setCartList(activeUser.cart);
     };
 
     const handleBookNow = async () => {
@@ -431,7 +427,7 @@ const Cart = ({ cartList, setCartList }) => {
     return (
         <div className="primary">
             {loading ? (
-                <SyncLoader
+                <ClimbingBoxLoader
                     css={override}
                     className="loader"
                     size={30}
