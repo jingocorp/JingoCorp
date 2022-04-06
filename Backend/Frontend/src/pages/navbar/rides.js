@@ -1,10 +1,22 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { css } from "@emotion/react";
+import SyncLoader from "react-spinners/SyncLoader";
+
+const override = css`
+    background-color: #282c34;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+`;
 
 const Rides = () => {
     const [transactionList, setTransactionList] = useState([]);
     const [activeUser, setActiveUser] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         // callCartPage() ; // it is independent of updating funcs of cart and activeUser
@@ -16,6 +28,7 @@ const Rides = () => {
             // i.e. it won't store the vehile object inside  user.cart[0]._id != {vehicle object} and it will follow user.cart[0]._id == {vehicle object's id}
             // fetchCartList() ; // this we are using to solve the above issue by initializing it with something with population
             // i.e. user.cart[0]._id == {vehicle object} and that's what we require
+            setLoading(false);
         }
         // setCartList(activeUser.cart) ;
     }, [activeUser]);
@@ -79,23 +92,36 @@ const Rides = () => {
             <h1><u>Your Rides</u></h1>
             </div>  */}
 
-            {transactionList &&
-                transactionList.map((item) => (
-                    <div className="ridedetails">
-                        <div className="rideitems">
-                            <h2>TransactionId :</h2>
-                            <h2> {item._id}</h2>
-                            <h2>Amount : ₹{item.amount}</h2>
-                            <h5>Duration : {item.duration} hour(s)</h5>
-                            <h5>Date : {item.date}</h5>
-                        </div>
-                    </div>
-                ))}
+            {loading ? (
+                <SyncLoader
+                    css={override}
+                    className="loader"
+                    size={30}
+                    color={"#F37A24"}
+                    loading={loading}
+                />
+            ) : (
+                <>
+                    {transactionList &&
+                        transactionList.map((item) => (
+                            <div className="ridedetails">
+                                <div className="rideitems">
+                                    <h2>TransactionId :</h2>
+                                    <h2> {item._id}</h2>
+                                    <h2>Amount : ₹{item.amount}</h2>
+                                    <h5>Duration : {item.duration} hour(s)</h5>
+                                    <h5>Date : {item.date}</h5>
+                                </div>
+                            </div>
+                        ))}
 
-            <h1 style={{ marginTop: "5%" }}>
-                &nbsp; &nbsp; &nbsp; Note: These are the pseudo-transaction
-                details implemented for testing purposes of the website only!
-            </h1>
+                    <h1 style={{ marginTop: "5%" }}>
+                        &nbsp; &nbsp; &nbsp; Note: These are the
+                        pseudo-transaction details implemented for testing
+                        purposes of the website only!
+                    </h1>
+                </>
+            )}
         </div>
     );
 
