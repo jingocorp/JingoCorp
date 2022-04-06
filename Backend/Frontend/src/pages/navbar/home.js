@@ -32,7 +32,8 @@ function Home({ cartList, setCartList }) {
     //useRef
     const myRef = useRef(null);
 
-    const executeScroll = () => myRef.current.scrollIntoView();
+    const executeScroll = () =>
+        myRef.current.scrollIntoView({ behavior: "smooth" });
 
     useEffect(() => {
         fetchActiveUser();
