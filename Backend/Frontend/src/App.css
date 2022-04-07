@@ -62,7 +62,13 @@
 
 @media screen and (max-width: 700px) {
     .navlogin {
-        margin-left: -16px;
+        margin-left: -18px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .navbtn {
+        margin-left: 0.8rem !important;
     }
 }
 
@@ -76,7 +82,7 @@
 
 @media screen and (max-width: 700px) {
     .navcart {
-        margin-left: -5px;
+        margin-left: -1rem;
     }
 }
 

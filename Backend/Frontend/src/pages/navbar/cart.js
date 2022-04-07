@@ -389,11 +389,11 @@ const Cart = ({ cartList, setCartList }) => {
     };
 
     const loadCartList = async () => {
-        setLoading(true);
+        //setLoading(true);
         await fetchActiveUser();
         if (activeUser) {
             setCartList(activeUser.cart);
-            setLoading(false);
+            //setLoading(false);
         }
     };
 
@@ -430,94 +430,70 @@ const Cart = ({ cartList, setCartList }) => {
 
     return (
         <div className="primary">
-            {loading ? (
-                <SyncLoader
-                    css={override}
-                    className="loader"
-                    size={30}
-                    color={"#F37A24"}
-                    loading={loading}
-                />
-            ) : (
-                <>
-                    {/* On defining onClick like {handleClearCart()} will make it call automatically without it being pressed
+            {/* On defining onClick like {handleClearCart()} will make it call automatically without it being pressed
                     so it's preferred doing it like {() => handleClearCart()} */}
-                    <div className="cartbtn">
-                        <button
-                            onClick={() => setCartList([])}
-                            className="clrcart"
-                        >
-                            Clear Cart
-                        </button>
-                        <button
-                            onClick={() => saveCartList()}
-                            className="savecart"
-                        >
-                            Save Cart
-                        </button>
-                        <button
-                            onClick={() => loadCartList()}
-                            className="loadcart"
-                        >
-                            Load Cart
-                        </button>
-                    </div>
+            <div className="cartbtn">
+                <button onClick={() => setCartList([])} className="clrcart">
+                    Clear Cart
+                </button>
+                <button onClick={() => saveCartList()} className="savecart">
+                    Save Cart
+                </button>
+                <button onClick={() => loadCartList()} className="loadcart">
+                    Load Cart
+                </button>
+            </div>
 
-                    <div className="cartcontent">
-                        <div className="children">
-                            <div className="cart">
-                                <div>
-                                    <h2>My Cart</h2>
-                                    <hr />
-                                </div>
+            <div className="cartcontent">
+                <div className="children">
+                    <div className="cart">
+                        <div>
+                            <h2>My Cart</h2>
+                            <hr />
+                        </div>
 
-                                {cartList &&
-                                    cartList.map((item) => (
-                                        <div className="cartitem">
-                                            <img
-                                                src={item.image}
-                                                alt={item.city}
-                                            />
+                        {cartList &&
+                            cartList.map((item) => (
+                                <div className="cartitem">
+                                    <img src={item.image} alt={item.city} />
 
-                                            <div className="cartmodelname">
-                                                <h2>{item.modelName}</h2>
-                                                <h5>{item.substation}</h5>
-                                            </div>
+                                    <div className="cartmodelname">
+                                        <h2>{item.modelName}</h2>
+                                        <h5>{item.substation}</h5>
+                                    </div>
 
-                                            <div className="cartrate">
-                                                <h4>₹{item.rate}/h</h4>
-                                            </div>
+                                    <div className="cartrate">
+                                        <h4>₹{item.rate}/h</h4>
+                                    </div>
 
-                                            <button
-                                                onClick={() =>
-                                                    handleRemoveFromCart(item)
-                                                }
-                                                // style={{display: 'inline-flex', alignItems: 'center', justifyContent: 'center', fontSize: '25px'}}
-                                                className="removebtn"
-                                            >
-                                                -
-                                            </button>
+                                    <button
+                                        onClick={() =>
+                                            handleRemoveFromCart(item)
+                                        }
+                                        // style={{display: 'inline-flex', alignItems: 'center', justifyContent: 'center', fontSize: '25px'}}
+                                        className="removebtn"
+                                    >
+                                        -
+                                    </button>
 
-                                            {item.quantity}
+                                    {item.quantity}
 
-                                            <button
-                                                onClick={() =>
-                                                    handleAddToCart(item)
-                                                }
-                                                // style={{display: 'inline-flex', alignItems: 'center', justifyContent: 'center', fontSize: '25px'}}
-                                                className="addbtn"
-                                            >
-                                                +
-                                            </button>
+                                    <button
+                                        onClick={() => handleAddToCart(item)}
+                                        // style={{display: 'inline-flex', alignItems: 'center', justifyContent: 'center', fontSize: '25px'}}
+                                        className="addbtn"
+                                    >
+                                        +
+                                    </button>
 
-                                            <div className="subtotal">
-                                                <h4>
-                                                    Subtotal: ₹{item.rate}*
-                                                    {item.quantity}{" "}
-                                                </h4>
-                                            </div>
+                                    <div className="subtotal">
+                                        <h4>
+                                            Subtotal: ₹{item.rate}*
+                                            {item.quantity}{" "}
+                                        </h4>
+                                    </div>
 
-                                            {/* <button
+                                    {/* <button
                                     onClick={() => handleRemoveFromCart(item)}
                                     // style={{display: 'inline-flex', alignItems: 'center', justifyContent: 'center', fontSize: '25px'}}
                                     className="removebtn"
@@ -535,50 +511,46 @@ const Cart = ({ cartList, setCartList }) => {
                                     +
                                 </button> */}
 
-                                            <hr />
-                                        </div>
-                                    ))}
-                            </div>
-                        </div>
-
-                        <div className="finalize">
-                            <div className="label">
-                                <div>
-                                    <label>
-                                        For how long do you want to ride :
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{" "}
-                                    </label>
+                                    <hr />
                                 </div>
-                                <input
-                                    onChange={(e) =>
-                                        setDuration(e.target.value)
-                                    }
-                                    className="input"
-                                    min={1}
-                                    value={duration}
-                                    type="number"
-                                    placeholder="Enter Duration"
-                                />{" "}
-                                hours
-                            </div>
-                            <hr />
-                            <div className="label2">
-                                <label>
-                                    Your total cost is: Rs.{totalCost}{" "}
-                                </label>
-                            </div>
-                            <div>
-                                <button
-                                    onClick={() => handleBookNow()}
-                                    className="bookbtn"
-                                >
-                                    Book Now
-                                </button>
-                            </div>
-                        </div>
+                            ))}
                     </div>
+                </div>
 
-                    {/* <div className="finalize">
+                <div className="finalize">
+                    <div className="label">
+                        <div>
+                            <label>
+                                For how long do you want to ride :
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{" "}
+                            </label>
+                        </div>
+                        <input
+                            onChange={(e) => setDuration(e.target.value)}
+                            className="input"
+                            min={1}
+                            value={duration}
+                            type="number"
+                            placeholder="Enter Duration"
+                        />{" "}
+                        hours
+                    </div>
+                    <hr />
+                    <div className="label2">
+                        <label>Your total cost is: Rs.{totalCost} </label>
+                    </div>
+                    <div>
+                        <button
+                            onClick={() => handleBookNow()}
+                            className="bookbtn"
+                        >
+                            Book Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            {/* <div className="finalize">
                         <div className="label">
                             <div>
                                 <label>
@@ -651,8 +623,6 @@ const Cart = ({ cartList, setCartList }) => {
                         ))}
                     </div>
                     </div> */}
-                </>
-            )}
         </div>
     );
 };

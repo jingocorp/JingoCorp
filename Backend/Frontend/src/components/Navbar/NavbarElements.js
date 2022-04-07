@@ -29,7 +29,7 @@ export const NavLink = styled(Link)`
     }
 
     @media screen and (max-width: 768px) {
-        margin-right: -20px;
+        margin-right: -25px;
         margin-left: 2px;
         font-size: 10px;
     }
@@ -98,6 +98,6 @@ export const NavBtnLink = styled(Link)`
     }
 
     @media screen and (max-width: 768px) {
-        padding: 8px 18px;
+        padding: 6px 10px;
     }
 `;

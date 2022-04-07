@@ -981,7 +981,7 @@
     background-image: url("./pages/images/Apple-Car.jpg");
     background-size: cover;
     background-position: center;
-    height: 800px;
+    height: cover;
     color: rgb(255, 0, 0, 0.6);
 }
 
