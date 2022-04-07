@@ -48,12 +48,12 @@ self.__precacheManifest = [
     "url": "/static/media/rr.fe9fab51.jpg"
   },
   {
-    "revision": "278840ab3413055494f02494ca483149",
-    "url": "/static/media/priyam.278840ab.jpg"
-  },
-  {
     "revision": "ba58f8bcbbba6ff955cc0986780a802e",
     "url": "/static/media/bg1.ba58f8bc.jpg"
+  },
+  {
+    "revision": "278840ab3413055494f02494ca483149",
+    "url": "/static/media/priyam.278840ab.jpg"
   },
   {
     "revision": "c9d17d2dc097c7714be0634b87c278a7",
@@ -64,12 +64,12 @@ self.__precacheManifest = [
     "url": "/static/media/r.d52a2eb3.jpg"
   },
   {
-    "revision": "72eba0590acf3be6f092a391f3e83b92",
-    "url": "/static/media/Rishav.72eba059.jpg"
-  },
-  {
     "revision": "9a54d075a721a85601174cd9749ffd9d",
     "url": "/static/media/shivendra2.9a54d075.jpg"
+  },
+  {
+    "revision": "72eba0590acf3be6f092a391f3e83b92",
+    "url": "/static/media/Rishav.72eba059.jpg"
   },
   {
     "revision": "3a2261012cf497e5dee8d82f28b07cee",

@@ -79,16 +79,16 @@ router.post("/signin", async (req, res) => {
             res.status(400).json({ error: "User not exists !!" });
         } else {
             const isMatch = await bcrypt.compare(password, userLogin.password);
-            const token = await userLogin.generateAuthToken();
-            console.log("Token : " + token);
-            res.cookie("jwtoken", token, {
-                expires: new Date(Date.now() + 25892000000),
-                httpOnly: true,
-            });
 
             if (!isMatch) {
                 res.status(400).json({ error: "Invalid password !!" });
             } else {
+                const token = await userLogin.generateAuthToken();
+                console.log("Token : " + token);
+                res.cookie("jwtoken", token, {
+                    expires: new Date(Date.now() + 25892000000),
+                    httpOnly: true,
+                });
                 // console.log(userLogin);
                 res.status(201).json({
                     message: "User Logged In successfully !!",
