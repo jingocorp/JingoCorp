@@ -1,18 +1,20 @@
 import React from "react";
-import {Form, Input} from 'antd';
-import 'antd/dist/antd.css'; 
-import { useState ,useContext } from 'react';
-import {useNavigate} from "react-router-dom" ; 
+import { Form, Input } from "antd";
+import "antd/dist/antd.css";
+import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../App";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+toast.configure();
 
 function Login() {
-
-    const {state ,dispatch} = useContext(UserContext) ;
+    const { state, dispatch } = useContext(UserContext);
 
     const [form] = Form.useForm();
-    
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
     const [allEntry, setAllEntry] = useState([]);
 
@@ -20,73 +22,73 @@ function Login() {
         e.preventDefault();
 
         const newEntry = { email: email, password: password };
-        setAllEntry([ ...allEntry, newEntry]);
+        setAllEntry([...allEntry, newEntry]);
         console.log(allEntry);
-    }
+    };
 
     // States for checking the errors
-const [submitted, setSubmitted] = useState(false);
-const [error, setError] = useState(false);
+    const [submitted, setSubmitted] = useState(false);
+    const [error, setError] = useState(false);
 
-// Handling the form submission
-// const handleSubmit = (e) => {
-// 	e.preventDefault();
-// 	if (email === '' || password === '') {
-// 	setError(true);
-// 	} else {
-// 	setSubmitted(true);
-// 	setError(false);
-// 	}
-// }
+    // Handling the form submission
+    // const handleSubmit = (e) => {
+    // 	e.preventDefault();
+    // 	if (email === '' || password === '') {
+    // 	setError(true);
+    // 	} else {
+    // 	setSubmitted(true);
+    // 	setError(false);
+    // 	}
+    // }
 
-// Showing error message if error is true
-const errorMessage = () => {
-	return (
-	<div
-		className="error"
-		style={{
-		display: error ? '' : 'none',
-		}}>
-		<h1>Please enter your Email and Password !!</h1>
-	</div>
-	);
-};
+    // Showing error message if error is true
+    const errorMessage = () => {
+        return (
+            <div
+                className="error"
+                style={{
+                    display: error ? "" : "none",
+                }}
+            >
+                <h1>Please enter your Email and Password !!</h1>
+            </div>
+        );
+    };
 
-//----------------------  BackEnd thing below : -------------------------------
+    //----------------------  BackEnd thing below : -------------------------------
 
-    const navigate = useNavigate() ;
+    const navigate = useNavigate();
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (email === '' || password === '') {
+        if (email === "" || password === "") {
             setError(true);
         } else {
             setSubmitted(true);
             setError(false);
         }
 
-        const res = await fetch("/signin" , {
-			method : "POST" ,
-			headers : {
-				"Content-Type" : "application/json"
-			} ,
-			body : JSON.stringify({
-				email ,
-                password
-			}) 
-		}) ;
+        const res = await fetch("/signin", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                email,
+                password,
+            }),
+        });
 
-        const data = res.json() ;
-        console.log("--> "+data);
+        const data = res.json();
+        console.log("--> " + data);
 
-        if(res.status === 400  ||  res.status === 422  ||  !data) {
-            window.alert("Invalid Credentials !!") ;
-        }else {
-            dispatch({type : "USER" ,payload : true}) ;
-            window.alert("Signin Successful !!  :)") ;
-            navigate("/") ;
+        if (res.status === 400 || res.status === 422 || !data) {
+            toast("Invalid Credentials !!");
+        } else {
+            dispatch({ type: "USER", payload: true });
+            toast("Signin Successful !!  :)");
+            navigate("/");
         }
-    }
-
+    };
 
     return (
         <div className="login">
@@ -141,7 +143,15 @@ const errorMessage = () => {
                         type="primary"
                         htmlType="submit"
                         className="btn1"
-                        style={{ marginTop: "30px", display: 'flex',alignItems: 'center', justifyContent: 'center', fontSize: '20px', height: '2.2em', width: '5em'}}
+                        style={{
+                            marginTop: "30px",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            fontSize: "20px",
+                            height: "2.2em",
+                            width: "5em",
+                        }}
                         onClick={handleSubmit}
                     >
                         Login
@@ -223,24 +233,7 @@ const errorMessage = () => {
     // );
 }
 
-export default Login
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export default Login;
 
 /*
 //import { render } from '@testing-library/react';
