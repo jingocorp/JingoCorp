@@ -3,6 +3,9 @@ import { Checkbox, Form, Input, Select } from "antd";
 import "antd/dist/antd.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+toast.configure()
 
 function SignUp() {
     const [form] = Form.useForm();
@@ -94,7 +97,7 @@ function SignUp() {
             );
             console.log("Registration Unsuccessful");
         } else {
-            window.alert("Registration submitted Successful from frontend :)");
+            toast("Registration Successful :)");
             console.log("Registration submitted Successful from frontend");
             navigate("/login");
         }
