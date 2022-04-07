@@ -4,9 +4,6 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import SyncLoader from "react-spinners/SyncLoader";
 import { UserContext } from "../../App";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-toast.configure();
 // import Texty from "rc-texty";
 // import "rc-texty/assets/index.css";
 // import TweenOne from "rc-tween-one";
@@ -424,7 +421,7 @@ const Cart = ({ cartList, setCartList }) => {
             );
             navigate("/rides");
         } else {
-            toast("Payment failed :(");
+            window.alert("Payment failed :(");
         }
 
         handleClearCart();

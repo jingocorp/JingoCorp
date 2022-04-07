@@ -4,9 +4,6 @@ import "antd/dist/antd.css";
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../App";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-toast.configure();
 
 function Login() {
     const { state, dispatch } = useContext(UserContext);
@@ -82,10 +79,10 @@ function Login() {
         console.log("--> " + data);
 
         if (res.status === 400 || res.status === 422 || !data) {
-            toast("Invalid Credentials !!");
+            window.alert("Invalid Credentials !!");
         } else {
             dispatch({ type: "USER", payload: true });
-            toast("Signin Successful !!  :)");
+            window.alert("Signin Successful !!  :)");
             navigate("/");
         }
     };
