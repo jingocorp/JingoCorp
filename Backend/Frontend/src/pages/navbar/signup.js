@@ -97,7 +97,7 @@ function SignUp() {
             );
             console.log("Registration Unsuccessful");
         } else {
-            toast("Registration Successful :)");
+            toast("Registration Successful :)")
             console.log("Registration submitted Successful from frontend");
             navigate("/login");
         }
