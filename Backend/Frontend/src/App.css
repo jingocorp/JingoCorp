@@ -100,7 +100,7 @@
 
 .navm :hover {
     background-color: #111;
-    color: rgb(255,255,0.6);
+    color: rgb(255, 255, 255, 0.7);
     transition: 0.5s;
     text-transform: uppercase;
     padding: 15px;
