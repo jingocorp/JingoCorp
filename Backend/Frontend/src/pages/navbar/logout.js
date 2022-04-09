@@ -5,6 +5,9 @@ import { UserContext } from "../../App";
 
 import { css } from "@emotion/react";
 import SyncLoader from "react-spinners/SyncLoader";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+toast.configure();
 
 const override = css`
     background-color: #282c34;
@@ -32,6 +35,7 @@ export default function Logout({ setCartList, setActiveUser }) {
         })
             .then((res) => {
                 dispatch({ type: "USER", payload: false });
+                toast.info("Logged out successfully 👋");
                 // window.alert("User Logged Out !!")
                 setActiveUser(null);
                 setCartList([]);
@@ -47,21 +51,5 @@ export default function Logout({ setCartList, setActiveUser }) {
             });
     }, []);
 
-    return (
-        <div className="about">
-            {loading ? (
-                <SyncLoader
-                    css={override}
-                    className="loader"
-                    size={30}
-                    color={"#F37A24"}
-                    loading={loading}
-                />
-            ) : (
-                <>
-                    <h1>Welcome to the LogOut Page !!</h1>
-                </>
-            )}
-        </div>
-    );
+    return <></>;
 }

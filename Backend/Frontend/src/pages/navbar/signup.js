@@ -92,12 +92,10 @@ function SignUp() {
         console.log("--> " + error);
 
         if (!data || res.status === 400 || res.status === 422) {
-            window.alert(
-                "Registration Unsuccessful :( \n Please fill the all the fields properly !!"
-            );
+            toast.error("Please fill all the fields properly 😠");
             console.log("Registration Unsuccessful");
         } else {
-            toast("Registration Successful :)");
+            toast.success("Registration successful 🥳");
             console.log("Registration submitted Successful from frontend");
             navigate("/login");
         }

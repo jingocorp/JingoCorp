@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { Form, Input, Button } from "antd";
 import { AimOutlined, PhoneOutlined, MailOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+toast.configure();
 
 const Contact = () => {
     const [name, setName] = useState("");
@@ -31,12 +34,10 @@ const Contact = () => {
         console.log(data);
 
         if (!data || res.status === 400 || res.status === 422) {
-            window.alert(
-                "Feedback Registration was Unsuccessful :( \n Please fill the all the fields properly !!"
-            );
+            toast.error("Please fill the all the fields properly 😠");
             console.log("Feedback Registration Unsuccessful");
         } else {
-            window.alert("Feedback has been submitted Successfully :)");
+            toast.success("Your Feedback has been submitted successfully 👍");
             console.log(
                 "Feedback Registration submitted Successful from frontend"
             );

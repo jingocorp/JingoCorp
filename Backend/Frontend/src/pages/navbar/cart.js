@@ -292,8 +292,8 @@ const Cart = ({ cartList, setCartList }) => {
                         itemExists.quantity
                 );
             } else {
-                window.alert(
-                    "Your current item is exceeding the available quantity limit !!"
+                toast.warn(
+                    "Your current item is exceeding the available quantity limit 😏"
                 );
             }
         } else {

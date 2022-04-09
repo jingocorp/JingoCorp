@@ -82,10 +82,12 @@ function Login() {
         console.log("--> " + data);
 
         if (res.status === 400 || res.status === 422 || !data) {
-            toast("Invalid Credentials!! Please try Again");
+            toast.error("Invalid credentials 😓", {
+                className: "logintoasterror",
+            });
         } else {
             dispatch({ type: "USER", payload: true });
-            toast("Logged you in successfully :)");
+            toast.success("Logged in successfully 😎");
             navigate("/");
         }
     };
