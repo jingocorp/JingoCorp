@@ -60,6 +60,7 @@ const App = () => {
             // setCartList(activeUser.cart) ;
             dispatch({ type: "USER", payload: true });
             if (activeUser.email === "admin@jingo.com") {
+                //admin
                 console.log("????????");
                 dispatchForAdmin({ type: "ADMIN", payload: true });
             } else {
