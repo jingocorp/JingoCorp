@@ -6,7 +6,12 @@ import * as AiIcons from "react-icons/ai";
 import { SidebarData } from "./SidebarData";
 import SubMenu from "./SubMenu";
 import { IconContext } from "react-icons/lib";
-import {HomeOutlined, GiftOutlined, CarOutlined, ShoppingCartOutlined} from '@ant-design/icons';
+import {
+    HomeOutlined,
+    GiftOutlined,
+    CarOutlined,
+    ShoppingCartOutlined,
+} from "@ant-design/icons";
 // import * as FaIcons from "react-icons/fa";
 // import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io";
@@ -39,9 +44,9 @@ const NavIcon = styled(Link)`
     align-items: center;
 
     @media screen and (max-width: 768px) {
-        margin-left:1rem;
-        font-size:1rem;
-   }
+        margin-left: 1rem;
+        font-size: 1rem;
+    }
 `;
 
 const SidebarNav = styled.nav`
@@ -55,8 +60,6 @@ const SidebarNav = styled.nav`
     left: ${({ sidebar }) => (sidebar ? "0" : "-100%")};
     transition: 50ms;
     z-index: 10;
-
-    
 `;
 
 const SidebarWrap = styled.div`
@@ -70,7 +73,7 @@ const SidebarDataForAdmin = [
         icon: <AiIcons.AiFillHome />,
         iconClosed: <RiIcons.RiArrowDownSFill />,
         iconOpened: <RiIcons.RiArrowUpSFill />,
-    
+
         // subNav: [
         // {
         // 	title: "Our Aim",
@@ -90,25 +93,25 @@ const SidebarDataForAdmin = [
         icon: <IoIcons.IoIosPaper />,
         iconClosed: <RiIcons.RiArrowDownSFill />,
         iconOpened: <RiIcons.RiArrowUpSFill />,
-    
+
         subNav: [
-        {
-            title: "Assam",
-            path: "/services/services1",
-            icon: <IoIcons.IoIosPaper />,
-            cName: "sub-nav",
-        },
-        {
-            title: "Bihar",
-            path: "/services/services2",
-            icon: <IoIcons.IoIosPaper />,
-            cName: "sub-nav",
-        },
-        {
-            title: "Uttar Pradesh",
-            path: "/services/services3",
-            icon: <IoIcons.IoIosPaper />,
-        },
+            {
+                title: "Assam",
+                path: "/services/services1",
+                icon: <IoIcons.IoIosPaper />,
+                cName: "sub-nav",
+            },
+            {
+                title: "Bihar",
+                path: "/services/services2",
+                icon: <IoIcons.IoIosPaper />,
+                cName: "sub-nav",
+            },
+            {
+                title: "Uttar Pradesh",
+                path: "/services/services3",
+                icon: <IoIcons.IoIosPaper />,
+            },
         ],
     },
     {
@@ -121,35 +124,34 @@ const SidebarDataForAdmin = [
         path: "/contact",
         icon: <FaIcons.FaPhone />,
     },
-    
+
     {
         title: "Our Team",
         path: "/team",
         icon: <IoIcons.IoMdHelpCircle />,
     },
-    ];
+];
 
 const Sidebar = () => {
     const { state, dispatch } = useContext(UserContext);
-    const { stateForAdmin ,dispatchForAdmin} = useContext(AdminContext) ;
-    
+    const { stateForAdmin, dispatchForAdmin } = useContext(AdminContext);
+
     const [sidebar, setSidebar] = useState(false);
-    const [activeUser, setActiveUser] = useState(null) ;
+    const [activeUser, setActiveUser] = useState(null);
 
     const showSidebar = () => setSidebar(!sidebar);
 
     useEffect(() => {
-		fetchActiveUser() ;
-		if(activeUser) {
-		  // setCartList(activeUser.cart) ;
-		  dispatch({type : "USER" ,payload : true})
-		}else {
-		  dispatch({type : "USER" ,payload : false})
-		}
-			  
-	  }, [activeUser]) ;
+        fetchActiveUser();
+        if (activeUser) {
+            // setCartList(activeUser.cart) ;
+            dispatch({ type: "USER", payload: true });
+        } else {
+            dispatch({ type: "USER", payload: false });
+        }
+    }, [activeUser]);
 
-	  const fetchActiveUser = async () => {
+    const fetchActiveUser = async () => {
         // e.preventDefault()
         try {
             const res = await fetch("/cartlist", {
@@ -188,9 +190,8 @@ const Sidebar = () => {
         }
     };
 
-
     if (state) {
-        if(stateForAdmin) {
+        if (stateForAdmin) {
             return (
                 <>
                     <IconContext.Provider value={{ color: "#fff" }}>
@@ -199,49 +200,80 @@ const Sidebar = () => {
                                 <FaIcons.FaBars onClick={showSidebar} />
                             </NavIcon>
                             <Bars />
-    
+
                             <h3
                                 style={{
                                     textAlign: "center",
-                                  //  marginLeft: "200px",
+                                    //  marginLeft: "200px",
                                     color: "white",
                                 }}
                             >
                                 {/*Bike and Car Rentals*/}
-    
+
                                 {/* <RenderNavbarElements/> */}
                                 <NavMenu className="navm">
                                     <NavLink to="/" activeStyle>
-                                    <HomeOutlined style={{marginRight: '0.5em', fontSize: '1.5em'}} />    Home
+                                        <HomeOutlined
+                                            style={{
+                                                marginRight: "0.5em",
+                                                fontSize: "1.5em",
+                                            }}
+                                        />{" "}
+                                        Home
                                     </NavLink>
                                     <NavLink to="/offers" activeStyle>
-                                    <GiftOutlined style={{marginRight: '0.5em', fontSize: '1.5em'}}/>    Offers
+                                        <GiftOutlined
+                                            style={{
+                                                marginRight: "0.5em",
+                                                fontSize: "1.5em",
+                                            }}
+                                        />{" "}
+                                        Offers
                                     </NavLink>
                                     <NavLink to="/rides" activeStyle>
-                                    <CarOutlined style={{marginRight: '0.5em', fontSize: '1.5em'}}/>    Your Rides
+                                        <CarOutlined
+                                            style={{
+                                                marginRight: "0.5em",
+                                                fontSize: "1.5em",
+                                            }}
+                                        />{" "}
+                                        Your Rides
                                     </NavLink>
                                 </NavMenu>
                             </h3>
-    
+
                             {/* <RenderNavbar/> */}
-    
+
                             <NavBtn className="navbtn">
                                 <NavBtnLink to="/logout">LogOut</NavBtnLink>
                                 {/* <h3 color="white">Rishav</h3> */}
                             </NavBtn>
-                            <NavMenu style={{fontSize: '1.2em', fontWeight: 'bold'}}>
+                            <NavMenu
+                                style={{
+                                    fontSize: "1.2em",
+                                    fontWeight: "bold",
+                                }}
+                            >
                                 <div className="navcart">
-                            <NavLink to="/cart" activeStyle>
-                                <ShoppingCartOutlined style={{marginRight: '0.5em', fontSize: '1.5em'}}/>    Cart
-                            </NavLink>
-                            </div>
+                                    <NavLink to="/cart" activeStyle>
+                                        <ShoppingCartOutlined
+                                            style={{
+                                                marginRight: "0.5em",
+                                                fontSize: "1.5em",
+                                            }}
+                                        />{" "}
+                                        Cart
+                                    </NavLink>
+                                </div>
                             </NavMenu>
                         </Nav>
-    
+
                         <SidebarNav sidebar={sidebar}>
                             <SidebarWrap>
                                 <NavIcon to="#">
-                                    <AiIcons.AiOutlineClose onClick={showSidebar} />
+                                    <AiIcons.AiOutlineClose
+                                        onClick={showSidebar}
+                                    />
                                 </NavIcon>
                                 {SidebarDataForAdmin.map((item, index) => {
                                     return <SubMenu item={item} key={index} />;
@@ -251,7 +283,7 @@ const Sidebar = () => {
                     </IconContext.Provider>
                 </>
             );
-        }else {
+        } else {
             return (
                 <>
                     <IconContext.Provider value={{ color: "#fff" }}>
@@ -260,49 +292,80 @@ const Sidebar = () => {
                                 <FaIcons.FaBars onClick={showSidebar} />
                             </NavIcon>
                             <Bars />
-    
+
                             <h3
                                 style={{
                                     textAlign: "center",
-                                  //  marginLeft: "200px",
+                                    //  marginLeft: "200px",
                                     color: "white",
                                 }}
                             >
                                 {/*Bike and Car Rentals*/}
-    
+
                                 {/* <RenderNavbarElements/> */}
                                 <NavMenu className="navm">
                                     <NavLink to="/" activeStyle>
-                                    <HomeOutlined style={{marginRight: '0.5em', fontSize: '1.5em'}} />    Home
+                                        <HomeOutlined
+                                            style={{
+                                                marginRight: "0.5em",
+                                                fontSize: "1.5em",
+                                            }}
+                                        />{" "}
+                                        Home
                                     </NavLink>
                                     <NavLink to="/offers" activeStyle>
-                                    <GiftOutlined style={{marginRight: '0.5em', fontSize: '1.5em'}}/>    Offers
+                                        <GiftOutlined
+                                            style={{
+                                                marginRight: "0.5em",
+                                                fontSize: "1.5em",
+                                            }}
+                                        />{" "}
+                                        Offers
                                     </NavLink>
                                     <NavLink to="/rides" activeStyle>
-                                    <CarOutlined style={{marginRight: '0.5em', fontSize: '1.5em'}}/>    Your Rides
+                                        <CarOutlined
+                                            style={{
+                                                marginRight: "0.5em",
+                                                fontSize: "1.5em",
+                                            }}
+                                        />{" "}
+                                        Your Rides
                                     </NavLink>
                                 </NavMenu>
                             </h3>
-    
+
                             {/* <RenderNavbar/> */}
-    
+
                             <NavBtn className="navbtn">
                                 <NavBtnLink to="/logout">LogOut</NavBtnLink>
                                 {/* <h3 color="white">Rishav</h3> */}
                             </NavBtn>
-                            <NavMenu style={{fontSize: '1.2em', fontWeight: 'bold'}}>
+                            <NavMenu
+                                style={{
+                                    fontSize: "1.2em",
+                                    fontWeight: "bold",
+                                }}
+                            >
                                 <div className="navcart">
-                            <NavLink to="/cart" activeStyle>
-                                <ShoppingCartOutlined style={{marginRight: '0.5em', fontSize: '1.5em'}}/>    Cart
-                            </NavLink>
-                            </div>
+                                    <NavLink to="/cart" activeStyle>
+                                        <ShoppingCartOutlined
+                                            style={{
+                                                marginRight: "0.5em",
+                                                fontSize: "1.5em",
+                                            }}
+                                        />{" "}
+                                        Cart
+                                    </NavLink>
+                                </div>
                             </NavMenu>
                         </Nav>
-    
+
                         <SidebarNav sidebar={sidebar}>
                             <SidebarWrap>
                                 <NavIcon to="#">
-                                    <AiIcons.AiOutlineClose onClick={showSidebar} />
+                                    <AiIcons.AiOutlineClose
+                                        onClick={showSidebar}
+                                    />
                                 </NavIcon>
                                 {SidebarData.map((item, index) => {
                                     return <SubMenu item={item} key={index} />;
@@ -326,7 +389,7 @@ const Sidebar = () => {
                         <h3
                             style={{
                                 textAlign: "center",
-                               // marginLeft: "200px",
+                                // marginLeft: "200px",
                                 color: "white",
                             }}
                         >
@@ -335,23 +398,47 @@ const Sidebar = () => {
                             {/* <RenderNavbarElements/> */}
                             <NavMenu className="navm">
                                 <NavLink to="/" activeStyle>
-                                <HomeOutlined style={{marginRight: '0.5em', fontSize: '1.5em'}}/>    Home
+                                    <HomeOutlined
+                                        style={{
+                                            marginRight: "0.5em",
+                                            fontSize: "1.5em",
+                                        }}
+                                    />{" "}
+                                    Home
                                 </NavLink>
                                 <NavLink to="/offers" activeStyle>
-                                <GiftOutlined style={{marginRight: '0.5em', fontSize: '1.5em'}}/>   Offers
+                                    <GiftOutlined
+                                        style={{
+                                            marginRight: "0.5em",
+                                            fontSize: "1.5em",
+                                        }}
+                                    />{" "}
+                                    Offers
                                 </NavLink>
                                 <NavLink to="/rides" activeStyle>
-                                <CarOutlined style={{marginRight: '0.5em', fontSize: '1.5em'}}/>   Your Rides
+                                    <CarOutlined
+                                        style={{
+                                            marginRight: "0.5em",
+                                            fontSize: "1.5em",
+                                        }}
+                                    />{" "}
+                                    Your Rides
                                 </NavLink>
-                                
                             </NavMenu>
                         </h3>
 
                         {/* <RenderNavbar/> */}
 
-                        <NavBtn className="navbtn" >
+                        <NavBtn className="navbtn">
                             <NavBtnLink to="/sign-up">SignUp</NavBtnLink>
-                        <div className="navlogin"><NavBtnLink to="/login" style={{width: '6em'}}>LogIn</NavBtnLink></div>
+                            <div className="navlogin">
+                                <NavBtnLink
+                                    to="/login"
+                                    style={{ width: "6em" }}
+                                >
+                                    LogIn
+                                </NavBtnLink>
+                            </div>
                         </NavBtn>
                         {/* <NavMenu style={{fontSize: '1.2em', fontWeight: 'bold'}}>
                             <div className="navcrt">
@@ -376,7 +463,6 @@ const Sidebar = () => {
             </>
         );
     }
-
 
     // if (state) {
     //     return (
