@@ -158,7 +158,8 @@ const VehicleList = ({ searchResults, cartList, setCartList }) => {
     // }
 
     const handleAddToCart = async (item) => {
-        await authenticateActiveUser();
+        //await authenticateActiveUser();
+        if (!activeUser) navigate("/login");
 
         // setCartList(activeUser.cart) ;
         if (activeUser) {
