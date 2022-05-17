@@ -393,7 +393,7 @@ const Cart = ({ cartList, setCartList }) => {
 
     const loadCartList = async () => {
         //setLoading(true);
-        await fetchActiveUser();
+        //await fetchActiveUser();
         if (activeUser) {
             setCartList(activeUser.cart);
             //setLoading(false);
